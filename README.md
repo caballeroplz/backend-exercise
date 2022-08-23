@@ -11,7 +11,7 @@ aplicación de búsqueda y listado.
 
 ## Requerimientos
 
-Se deben crear 2 servicios utilizando Symfony 4:
+Se deben crear 2 servicios utilizando Symfony:
 * uno que permita buscar en base una cadena de búsqueda. El campo para filtrar será **food** y los datos a mostrar devolver serían: id, nombre y descripción.
 * uno que retorne los datos necesarios para pintar una vista de detalle que indique los anteriores, pero además incluya: imagen, slogan (tagline) y cuando fue fabricada (first_brewed).
 
