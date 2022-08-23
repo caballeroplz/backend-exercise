@@ -27,7 +27,7 @@ o Bitbucket con el historial completo de git.
 ## Criterio de evaluación
 
 * Que los servicios funcionen y devuelvan lo que se espera.
-* Uso de buenas prácticas de Symfony 4.
+* Uso de buenas prácticas de Symfony.
 * Programación orienta a objetos.
 * Cumplimiento de [PSR-1], [PSR-2] y [PSR-4].
 * Uso de [git-flow].
