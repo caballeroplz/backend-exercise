@@ -9,39 +9,37 @@ datos de terceros o propios.
 Para este ejercicio tenemos que ayudar a nuestros compañeros a hacer una
 aplicación de búsqueda y listado. 
 
-## Requerimientos
+## Especificaciones
 
-Se deben crear 2 servicios utilizando Symfony:
-* uno que permita buscar en base una cadena de búsqueda. El campo para filtrar será **food** y los datos a mostrar devolver serían: id, nombre y descripción.
-* uno que retorne los datos necesarios para pintar una vista de detalle que indique los anteriores, pero además incluya: imagen, slogan (tagline) y cuando fue fabricada (first_brewed).
+Necesitamos construir un API de cervezas que combinen con cierto tipo de comida. Para obtener los datos de las cervezas se utilizará la API de [PunkApi].
 
-Para obtener los datos de las recetas se utilizará la API de [PunkApi].
+Las aplicacion debe tener estos dos endpoints:
 
-Los servicios creados deben ser RESTful y tener como formato de salida JSON.
-Elige los nombres para los endpoints, propiedades, etc que te parezcan más
-adecuados y fáciles de tratar para las aplicaciones.
+- Busqueda mediante una cadena de caracteres. (El campo a filtrar será **food**)
+- Mostrar los datos de una cerveza especifica según el id especificado.
 
-La solución del ejercicio debe ser enviada en un repositorio de GitHub, GitLab
-o Bitbucket con el historial completo de git.
+La solución del ejercicio debe ser enviada en un repositorio de GitHub, GitLab o Bitbucket con el historial completo de git.
 
-## Criterio de evaluación
+# Requisitos
 
-* Que los servicios funcionen y devuelvan lo que se espera.
-* Uso de buenas prácticas de Symfony.
-* Programación orienta a objetos.
-* Cumplimiento de [PSR-1], [PSR-2] y [PSR-4].
-* Uso de [git-flow].
-* Puntos extra por uso de DDD y testing.
+La aplicación debe cumplir estos requisitos:
 
-## Notas sobre el ejercicio
+- Usar Symfony como Framework
+- Debe ser un API REST y tener JSON como formato de salida.
+- Los campos a mostrar serán: id, name, tagline, first_brewed, descrition, image
+- Debe estar construida en Arquitectura Hexagonal y DDD
+- La aplicación debe cumplir los estandares [PSR-2]
+- Se deben construir test unitarios sin atacar al API ( Mockear PunkAPI )
 
-* El ejercicio te llevará unas tres horas.
-* Eres libre de hacer las peticiones al API como más te guste. Nosotros
-  utilizamos [Guzzle], pero usa lo que prefieras.
+## Extras
+
+Como mejora de la aplicación si quires puedes implementar las siguientes funcionalidades.
+
+- Cachear las peticiones a PunkAPI temporalmente mediante FileSystem o Redis
+- Construir documentacion del API mediante OpenAPI. Puedes usar [NelmioAPIBundle] u otro para ello.
+- Crear test funcionales mediante Behat 
+
 
 [PunkApi]: https://punkapi.com/documentation/v2
-[PSR-1]: http://www.php-fig.org/psr/psr-1/
+[NelmioAPIBundle]: https://symfony.com/bundles/NelmioApiDocBundle/current/index.html
 [PSR-2]: http://www.php-fig.org/psr/psr-2/
-[PSR-4]: http://www.php-fig.org/psr/psr-4/
-[git-flow]: http://nvie.com/posts/a-successful-git-branching-model/
-[Guzzle]: https://github.com/guzzle/guzzle
