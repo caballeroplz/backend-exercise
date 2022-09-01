@@ -36,7 +36,7 @@ La aplicación debe cumplir estos requisitos:
 Como mejora de la aplicación puedes implementar las siguientes funcionalidades.
 
 - Cachear las peticiones a PunkAPI temporalmente mediante FileSystem o Redis
-- Construir documentacion del API mediante OpenAPI. Puedes usar [NelmioAPIBundle] u otro para ello.
+- Construir documentacion del API mediante OpenAPI. Puedes usar [NelmioAPIBundle] u otra librería para ello.
 - Crear test funcionales mediante Behat 
 
 
