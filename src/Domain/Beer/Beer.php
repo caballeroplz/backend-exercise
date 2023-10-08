@@ -28,10 +28,10 @@ class Beer
     ) {
         $this->id = new BeerId($id);
         $this->name = new Name($name);
-        $this->tagline = new TagLine($tagline);
-        $this->firstBrewed = new FirstBrewed($firstBrewed);
-        $this->description = new Description($description);
-        $this->imageUrl = new ImageUrl($imageUrl);
+        $this->tagline = new TagLine($tagline ? $tagline : 'not  . $foodavailable');
+        $this->firstBrewed = new FirstBrewed($firstBrewed ? $firstBrewed : 'not available');
+        $this->description = new Description($description ? $description : 'not available');
+        $this->imageUrl = new ImageUrl($imageUrl ? $imageUrl : 'not available');
     }
 
 
@@ -108,4 +108,20 @@ class Beer
         ];
     }
 
+    public static function toArrayCollection(array $beers): array
+    {
+        $beerData = [];
+        foreach ($beers as $beer) {
+            $beerData[] = [
+                'id' => $beer->getId()->getValue(),
+                'name' => $beer->getName()->getValue(),
+                'tagline' => $beer->getTagline()->getValue(),
+                'firstBrewed' => $beer->getFirstBrewed()->getValue(),
+                'description' => $beer->getDescription()->getValue(),
+                'imageUrl' => $beer->getImageUrl()->getValue()
+            ];
+        }
+
+        return $beerData;
+    }
 }

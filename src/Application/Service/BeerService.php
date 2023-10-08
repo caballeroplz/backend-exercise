@@ -24,6 +24,13 @@ class BeerService
         return $beer;
     }
 
+    public function getBeersByFood(string $food)
+    {
+        $beerData = $this->api->getBeersByFood($food);
+        $beers = $this->createBeerCollectionFromApiData($beerData);
+        return $beers;
+    }
+
     private function createBeerFromApiData(array $beerData)
     {
         $beer = new Beer(
@@ -35,5 +42,22 @@ class BeerService
             $beerData['image_url']
         );
         return $beer;
+    }
+
+    private function createBeerCollectionFromApiData(array $beersData)
+    {
+        $beers = [];
+        foreach ($beersData as $beerItem) {
+            $beer = new Beer(
+                $beerItem['id'],
+                $beerItem['name'],
+                $beerItem['tagline'],
+                $beerItem['first_brewed'],
+                $beerItem['description'],
+                $beerItem['image_url']
+            );
+            $beers[] = $beer;
+        }
+        return $beers;
     }
 }
