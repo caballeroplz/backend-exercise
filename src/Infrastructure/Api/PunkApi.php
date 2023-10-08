@@ -28,4 +28,16 @@ class PunkApi
         }
     }
 
+    public function getBeersByfood($food): array
+    {
+        $url = self::BASE_URL . 'beers?food=' . $food;
+
+        try {
+            $response = $this->httpClient->get($url);
+            $data = json_decode($response->getBody(), true);
+            return $data ?? null;
+        } catch (\Exception $e) {
+            throw new Exception('Error fetching beer from the Punk API.', 11);
+        }
+    }
 }
