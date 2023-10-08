@@ -6,7 +6,6 @@ use App\Domain\Beer\Beer;
 use App\Infrastructure\Api\PunkApi;
 use Symfony\Contracts\Cache\CacheInterface;
 
-
 class BeerService
 {
     private $api;
