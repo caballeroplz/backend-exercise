@@ -15,6 +15,7 @@
         "symfony/yaml": "6.3.*"
     },
     "require-dev": {
+        "squizlabs/php_codesniffer": "^3.7"
     },
     "config": {
         "allow-plugins": {
@@ -60,7 +61,7 @@
     },
     "extra": {
         "symfony": {
-            "allow-contrib": false,
+            "allow-contrib": true,
             "require": "6.3.*"
         }
     }
