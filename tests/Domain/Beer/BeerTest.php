@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Tests\Domain\Beer;
+
 use PHPUnit\Framework\TestCase;
 use App\Domain\Beer\Beer;
 
@@ -16,5 +18,4 @@ class BeerTest extends TestCase
         $this->assertEquals('Test Description', $beer->getDescription()->getValue());
         $this->assertEquals('test_image.jpg', $beer->getImageUrl()->getValue());
     }
-
 }

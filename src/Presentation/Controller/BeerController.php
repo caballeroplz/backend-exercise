@@ -2,10 +2,9 @@
 
 namespace App\Presentation\Controller;
 
-use App\Domain\Beer\Beer;
 use App\Application\Service\BeerService;
-use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class BeerController extends AbstractController
@@ -23,7 +22,7 @@ class BeerController extends AbstractController
         try {
             $beer = $this->beerService->getBeerById($id);
 
-            if (!$beer) {
+            if ($beer->getId() === null) {
                 return new JsonResponse(['message' => 'No beer found with the provided ID.'], 404);
             }
 
@@ -41,13 +40,15 @@ class BeerController extends AbstractController
         }
 
         try {
-            $matchingBeers = $this->beerService->getBeersByFood($food);
+            $matchingBeers = $this->beerService->searchBeersByFood($food);
 
-            if (!$matchingBeers) {
+            if (empty($matchingBeers)) {
                 return new JsonResponse(['message' => 'No results found. Drink water, my friend.'], 200);
             }
 
-            $jsonData = Beer::toArrayCollection($matchingBeers);
+            $jsonData = array_map(function ($beer) {
+                return $beer->toArray();
+            }, $matchingBeers);
 
             return new JsonResponse($jsonData);
         } catch (\Exception $e) {

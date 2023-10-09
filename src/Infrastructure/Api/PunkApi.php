@@ -28,7 +28,7 @@ class PunkApi
         }
     }
 
-    public function getBeersByfood($food): array
+    public function searchBeersByFood($food): array
     {
         $url = self::BASE_URL . 'beers?food=' . $food;
 

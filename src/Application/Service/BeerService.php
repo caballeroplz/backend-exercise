@@ -26,16 +26,19 @@ class BeerService
             $beerData = $this->api->getBeerById($id);
 
             if (!$beerData) {
-                throw new Exception('No found beer with id: '. $id, 100);
+                return [];
             }
             $beer = $this->createBeerFromApiData($beerData);
             return $beer;
         });
     }
 
-    public function getBeersByFood(string $food)
+    public function searchBeersByFood(string $food)
     {
-        $beerData = $this->api->getBeersByFood($food);
+        $beerData = $this->api->searchBeersByFood($food);
+        if (!$beerData) {
+            return [];
+        }
         $beers = $this->createBeerCollectionFromApiData($beerData);
         return $beers;
     }
